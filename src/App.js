@@ -5,12 +5,14 @@ import Home from "./components/page/Home";
 import Contact from "./components/page/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Error from "./components/page/Error";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <Error></Error>,
   },
   {
     path: "/home",
