@@ -28,3 +28,14 @@ Episode- 6
 
 #Shimmer UI ..instead of laoding spinner
 --Conditional rendering
+CORS :
+
+1. CORS plugin
+2. https://corsproxy.io
+
+Episode - 7
+-- React Routing DOM
+-- createBrowserRouting
+-- RoutingProvider
+-- useRoutingError
+--Error Element
