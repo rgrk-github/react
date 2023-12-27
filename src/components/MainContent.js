@@ -1,4 +1,4 @@
-import { restaurants } from "../utils/restaurantData";
+//import { restaurants } from "../utils/restaurantData";
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import { SWIGGY_RESTAURANTS_ENDPOINT } from "../utils/constants";
@@ -6,6 +6,9 @@ import Shimmer from "./Shimmer";
 
 const MainContent = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
+  const [filteredRestaurantsList, setFilteredRestaurantsList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  //var allRestuarants =
 
   //
   useEffect(() => {
@@ -17,9 +20,10 @@ const MainContent = () => {
     const data = await fetch(SWIGGY_RESTAURANTS_ENDPOINT);
     const json = await data.json();
     console.log(json);
-    setRestaurantsList(
-      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    );
+    const allRestuarants =
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants;
+    setRestaurantsList(allRestuarants);
+    setFilteredRestaurantsList(allRestuarants);
   };
 
   // Event handler for the button click
@@ -32,7 +36,7 @@ const MainContent = () => {
 
   const handleAllRestaurantsClick = () => {
     console.log("All Restaurants");
-    setRestaurantsList(restaurants);
+    setRestaurantsList(restaurantsList);
   };
 
   if (restaurantsList.length === 0) {
@@ -42,6 +46,25 @@ const MainContent = () => {
   return (
     <div className="main-container">
       <div className="search-container">
+        <div className="search-sec">
+          <input
+            name="searchText"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          ></input>
+          <button
+            name="Search"
+            onClick={() => {
+              console.log(searchText);
+              const filteredRestaurants = restaurantsList.filter((restaurant) =>
+                restaurant.info.name.includes(searchText)
+              );
+              setFilteredRestaurantsList(filteredRestaurants);
+            }}
+          >
+            Search
+          </button>
+        </div>
         <button
           name="Top Rated Restaurants"
           onClick={handleTopRatedRestaurantsClick}
@@ -53,7 +76,7 @@ const MainContent = () => {
         </button>
       </div>
       <div className="product-container">
-        {restaurantsList.map((restaurant) => (
+        {filteredRestaurantsList.map((restaurant) => (
           <RestaurantCard
             key={restaurant.info.id}
             product={restaurant}
