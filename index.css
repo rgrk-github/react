@@ -1,3 +1,158 @@
-h1 {
-    color: red;
+body {
+  margin: 0;
 }
+
+.app-layout-container {
+  /*border: 1px solid red;*/
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Set a minimum height to fill the viewport */
+  margin: 0;
+}
+/* header CSS Start */
+.header-container {
+  background-color: #d7d0d0;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; /* Set the container height to 100% of the viewport height */
+}
+
+.navigation {
+  text-align: center;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+}
+
+/* header CSS End */
+
+/* Body CSS Start */
+
+.main-container {
+  flex: 1;
+  background-color: gray;
+  border: 1px solid black;
+  padding: 20px;
+  margin-bottom: 2px;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Adjust the minmax value based on your needs */
+  grid-gap: 10px; /* Adjust the gap between cards */
+}
+
+/* Body CSS End */
+
+/* Footer CSS Start */
+.footer-container {
+  background-color: gray;
+  border: 1px solid blue;
+  padding: 20px; /* Optional: Add padding to the footer */
+  margin-bottom: 2px;
+}
+
+/* Footer CSS End */
+
+/* Card Item Start */
+/* Basic styling for the card */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-rating {
+  color: #f39c12;
+  margin-bottom: 8px;
+}
+
+.card-description {
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+/* Hover effect for the card */
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+/* Card Item End */
+
+/*Search Container Start*/
+.search-container {
+  border: 1px solid #f39c12;
+  padding: 10px;
+  margin: 10px;
+}
+
+/*Search Container End*/
+
+/* Shimmer Card */
+.shimmer-img {
+  height: 300px;
+  width: 200px;
+}
+.shimmer-content {
+  height: 100px;
+  padding: 15px;
+}
+
+/* Shimmer Card */
