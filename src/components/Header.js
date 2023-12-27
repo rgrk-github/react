@@ -1,6 +1,8 @@
 import { LOG_IMG_URL } from "../utils/constants";
+import { useState } from "react";
 
 const Header = () => {
+  const [btnLabel, setBtnLabel] = useState("Login");
   return (
     <div className="header-container">
       <div className="logo">
@@ -22,6 +24,18 @@ const Header = () => {
               <a href="#">Contact</a>
             </li>
           </ul>
+        </div>
+        <div className="accountNav">
+          <button
+            className="login"
+            onClick={() =>
+              btnLabel === "Login"
+                ? setBtnLabel("Logout")
+                : setBtnLabel("Login")
+            }
+          >
+            {btnLabel}
+          </button>
         </div>
       </div>
     </div>
