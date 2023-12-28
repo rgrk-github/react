@@ -61,7 +61,7 @@ body {
 /* Body CSS Start */
 
 .main-container {
-  flex: 1;
+  /*  flex: 1;*/
   background-color: gray;
   border: 1px solid black;
   padding: 20px;
@@ -157,3 +157,7 @@ body {
 }
 
 /* Shimmer Card */
+
+.content-area {
+  flex: 1;
+}

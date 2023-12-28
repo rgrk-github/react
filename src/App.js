@@ -6,34 +6,46 @@ import Contact from "./components/page/Contact";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Error from "./components/page/Error";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+const AppLayout = () => {
+  return (
+    <div className="app-layout-container">
+      <Header />
+      <div className="content-area">
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
+  );
+};
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
     errorElement: <Error></Error>,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <AboutUs />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
-  <div className="app-layout-container">
-    <Header />
-    <RouterProvider router={appRouter}></RouterProvider>
-    <Footer />
-  </div>
-);
+root.render(<RouterProvider router={appRouter}></RouterProvider>);

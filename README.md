@@ -35,7 +35,7 @@ CORS :
 
 Episode - 7
 -- React Routing DOM
--- createBrowserRouting
--- RoutingProvider
+-- createBrowserRouter
+-- RouterProvider
 -- useRoutingError
---Error Element
+-- Error Element
