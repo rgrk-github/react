@@ -2,6 +2,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import { SWIGGY_RESTAURANTS_ENDPOINT } from "../utils/constants";
+import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
 const MainContent = () => {
@@ -77,10 +78,12 @@ const MainContent = () => {
       </div>
       <div className="product-container">
         {filteredRestaurantsList.map((restaurant) => (
-          <RestaurantCard
+          <Link
             key={restaurant.info.id}
-            product={restaurant}
-          ></RestaurantCard>
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard product={restaurant}></RestaurantCard>
+          </Link>
         ))}
       </div>
     </div>
