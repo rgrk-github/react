@@ -235,3 +235,13 @@ body {
 }
 
 /* Restaurant Menu Items END */
+
+.aboutus-container {
+  padding: 10px;
+}
+
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

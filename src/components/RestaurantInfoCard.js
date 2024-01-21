@@ -1,6 +1,6 @@
 const RestaurantInfoCard = (props) => {
   console.log(props);
-  const { info } = props.restaurantDetails;
+  const { info } = props.restaurantDetails ? props.restaurantDetails : null;
   //console.log(info);
   const { id, name, avgRating, cuisines } = info;
 
