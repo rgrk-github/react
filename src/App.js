@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
-import AboutUs from "./components/page/AboutUs";
+
 import Home from "./components/page/Home";
 import Contact from "./components/page/Contact";
 import Header from "./components/Header";
@@ -8,6 +8,10 @@ import Footer from "./components/Footer";
 import Error from "./components/page/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/page/RestaurantMenu";
+
+const AboutUs = lazy(() => import("./components/page/AboutUs"));
+
+//import AboutUs from "./components/page/AboutUs";
 
 const AppLayout = () => {
   return (
@@ -36,7 +40,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <AboutUs />,
+        element: (
+          <Suspense>
+            <AboutUs />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
