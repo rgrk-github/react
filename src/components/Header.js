@@ -7,8 +7,8 @@ const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header-container">
-      <div className="logo">
+    <div className="flex">
+      <div className="w-50">
         <img className="logo" src={LOG_IMG_URL} alt="rgrk Food App Logo"></img>
       </div>
       <div className="navigation-container">
