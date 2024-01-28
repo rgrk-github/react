@@ -1,5 +1,5 @@
 //import { restaurants } from "../utils/restaurantData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { RestaurantCardWithDeal } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import { SWIGGY_RESTAURANTS_ENDPOINT } from "../utils/constants";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ const MainContent = () => {
   const [restaurantsList, setRestaurantsList] = useState([]);
   const [filteredRestaurantsList, setFilteredRestaurantsList] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const RestaurantCardDeal = RestaurantCardWithDeal(RestaurantCard);
   //var allRestuarants =
 
   //
@@ -43,9 +44,10 @@ const MainContent = () => {
   if (restaurantsList.length === 0) {
     return <Shimmer></Shimmer>;
   }
+  console.log(restaurantsList);
 
   return (
-    <div className="main-container">
+    <div className=" bg-gray-400 mb-1 p-4">
       <div className="search-container">
         <div className="search-sec">
           <input
@@ -76,13 +78,17 @@ const MainContent = () => {
           All Restaurants
         </button>
       </div>
-      <div className="product-container">
+      <div className="grid gap-5 grid-cols-5">
         {filteredRestaurantsList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard product={restaurant}></RestaurantCard>
+            {restaurant.info.aggregatedDiscountInfoV3 ? (
+              <RestaurantCardDeal product={restaurant}></RestaurantCardDeal>
+            ) : (
+              <RestaurantCard product={restaurant}></RestaurantCard>
+            )}
           </Link>
         ))}
       </div>

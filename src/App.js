@@ -15,9 +15,9 @@ const AboutUs = lazy(() => import("./components/page/AboutUs"));
 
 const AppLayout = () => {
   return (
-    <div className="app-layout-container">
+    <div className="flex flex-col min-h-lvh">
       <Header />
-      <div className="content-area">
+      <div className="flex-1">
         <Outlet />
       </div>
       <Footer />

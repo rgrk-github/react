@@ -7,13 +7,13 @@ const Header = () => {
   const [btnLabel, setBtnLabel] = useState("Login");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="flex">
-      <div className="w-50">
-        <img className="logo" src={LOG_IMG_URL} alt="rgrk Food App Logo"></img>
+    <div className="flex space justify-between bg-gray-500 rounded-md px-5">
+      <div className="align-middle pt-1 pb-1">
+        <img className="w-24" src={LOG_IMG_URL} alt="rgrk Food App Logo"></img>
       </div>
-      <div className="navigation-container">
-        <div className="navigation">
-          <ul>
+      <div className=" flex items-center">
+        <div className="">
+          <ul className="flex space-x-4">
             <li>
               <h4>OnlineStatus :{onlineStatus ? "🟢" : "🔴"}</h4>
             </li>
@@ -28,9 +28,9 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <div className="accountNav">
+        <div className="px-3">
           <button
-            className="login"
+            className="bg-green-100 rounded-md px-2 font-bold"
             onClick={() =>
               btnLabel === "Login"
                 ? setBtnLabel("Logout")
