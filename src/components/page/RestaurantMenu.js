@@ -4,50 +4,50 @@ import RestaurantInfoCard from "../RestaurantInfoCard";
 import { useParams } from "react-router-dom";
 import Shimmer from "../Shimmer";
 
-import useRestaurantMenu from "./../../utils/useRestaurantMenu";
-import useRestaurantInfo from "../../utils/useRestaurantInfo";
+//import useRestaurantMenu from "./../../utils/useRestaurantMenu";
+//import useRestaurantInfo from "../../utils/useRestaurantInfo";
+import useRestaurantItemCategories from "../../utils/useRestaurantItemCategories";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  //const [foodItems, setFoodItems] = useState([]);
-  //const [restaurantInfo, setRestaurantInfo] = useState(null);
+  const [openSection, setOpenSection] = useState(null);
 
-  const foodItems = useRestaurantMenu(resId);
-  //const restaurantInfo = useRestaurantInfo(resId);
-  /**
-  useEffect(() => {
-    fetchFoodItemsData();
-  }, []);
- **/
-  // Function to fetch data (replace with your API call or data-fetching logic)
-  /****const fetchFoodItemsData = async () => {
-    const data = await fetch(RESTAURANTS_MENU_ENDPOINT + resId);
-    const json = await data.json();
-    console.log(json);
-    const foodItems =
-      json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .itemCards;
-    const restaurantdetails = json.data.cards[0].card.card;
-    console.log(restaurantdetails);
+  const handleToggle = (index) => {
+    setOpenSection((prevOpenSection) =>
+      prevOpenSection === index ? null : index
+    );
+  };
 
-    // setFoodItems(foodItems);
-    setRestaurantInfo(restaurantdetails);
-  }; ***/
-  return foodItems == null ? (
+  //const foodItems = useRestaurantMenu(resId);
+  const itemCategories = useRestaurantItemCategories(resId);
+
+  return itemCategories == null ? (
     <Shimmer />
   ) : (
-    <>
-      {/****
-      <RestaurantInfoCard
-        restaurantDetails={restaurantInfo}
-      ></RestaurantInfoCard>
-    ****/}
-      <main className="menu-items">
-        {foodItems.map((item) => (
-          <FoodItemCard key={item.card.info.id} foodItem={item}></FoodItemCard>
-        ))}
-      </main>
-    </>
+    <div className="max-w-3xl mx-auto mt-8 bg-slate-300">
+      {itemCategories.map((item, index) => (
+        <div key={index} className="border rounded-md overflow-hidden mb-2">
+          <button
+            onClick={() => handleToggle(index)}
+            className="w-full p-4 text-left focus:outline-none"
+          >
+            {item.card.card.title}
+          </button>
+          {openSection === index && (
+            <div className="p-4">
+              <div className="max-w-screen-md m-auto my-3 px-3 bg-slate-300">
+                {item.card.card.itemCards.map((item) => (
+                  <FoodItemCard
+                    key={item.card.info.id}
+                    foodItem={item}
+                  ></FoodItemCard>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
   );
 };
 
